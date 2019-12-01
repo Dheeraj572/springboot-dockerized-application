@@ -1,6 +1,5 @@
 package com.projects.springbootdockerizedapplication.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -11,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.projects.springbootdockerizedapplication.exception.StudentException;
 import com.projects.springbootdockerizedapplication.service.IStudentService;
 import com.projects.springbootdockerizedapplication.util.StudentResponse;
 
@@ -31,16 +28,8 @@ public class StudentController {
 		LOGGER.info("Retrieving student details ----");
 		List<StudentResponse> studentResponseList = null;
 		
-		try {
+		studentResponseList = studentService.getStudents();
 
-			studentResponseList = studentService.getStudents();
-
-		} catch (Exception e) {
-			LOGGER.error("Error Retrieving student details  ---------  ");
-			return new ResponseEntity<>(new StudentException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to retrieve student details", new Date()), HttpStatus.INTERNAL_SERVER_ERROR);
-			
-		}
-		 
 		LOGGER.info("Retrieved student details ----");
 		
 		return new ResponseEntity<>(studentResponseList, HttpStatus.OK);

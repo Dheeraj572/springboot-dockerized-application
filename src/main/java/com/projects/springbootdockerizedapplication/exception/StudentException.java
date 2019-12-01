@@ -13,9 +13,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
-public class StudentException extends Exception{
+public class StudentException{
 
-	private static final long serialVersionUID = 1L;
 	
 	private HttpStatus statusCode;
 	private String error;
