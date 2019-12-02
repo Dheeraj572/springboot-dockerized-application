@@ -26,9 +26,8 @@ public class StudentController {
 	public ResponseEntity<?> getStudents() {
 		
 		LOGGER.info("Retrieving student details ----");
-		List<StudentResponse> studentResponseList = null;
 		
-		studentResponseList = studentService.getStudents();
+		List<StudentResponse> studentResponseList  = studentService.getStudents();
 
 		LOGGER.info("Retrieved student details ----");
 		
